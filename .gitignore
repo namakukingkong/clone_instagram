@@ -10,12 +10,15 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+/config/initializers/cloudinary.yml
+/heroku-development.sh
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
 /tmp
+/config/cloudinary.yml
 
 # Ignore images on local version
 /public/system/posts/images/

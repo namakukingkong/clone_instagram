@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_voter
+  mount_uploader :avatar_file_name, UserUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   validates :user_name, presence: true, length: { minimum: 4, maximum: 12 }
@@ -11,6 +12,10 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  has_attached_file :avatar, styles: { medium: '152x152#' }
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  # has_attached_file :avatar, styles: { medium: '152x152#' }
+  # validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  def avatar
+    avatar_file_name
+  end
+
 end
